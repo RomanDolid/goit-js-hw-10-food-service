@@ -19,16 +19,19 @@ themeToggleRef.addEventListener('change', changeClassTheme);
 
 function changeClassTheme() {
   if (themeToggleRef.checked) {
-    localStorage.setItem('theme', Theme.DARK);
-    bodyRef.classList.add(Theme.DARK);
+    themeSetStorage(Theme.DARK);
     bodyRef.classList.remove(Theme.LIGHT);
   } else {
-    localStorage.setItem('theme', Theme.LIGHT);
-    bodyRef.classList.add(Theme.LIGHT);
+    themeSetStorage(Theme.LIGHT);
     bodyRef.classList.remove(Theme.DARK);
   }
 }
 
+function themeSetStorage(optionTheme) {
+  localStorage.setItem('theme', optionTheme);
+  bodyRef.classList.add(optionTheme);
+}
+console.log(bodyRef.className);
 function currentStatus() {
   if (currentTheme) {
     bodyRef.classList.add(currentTheme);
