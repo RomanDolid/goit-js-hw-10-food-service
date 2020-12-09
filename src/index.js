@@ -35,10 +35,10 @@ function themeSetStorage(optionTheme) {
   }
 }
 
-function currentStatus(thema) {
-  if (thema) {
-    bodyClassGhange.add(thema);
-    if (thema === Theme.DARK) {
+function currentStatus(theme) {
+  if (theme) {
+    bodyClassGhange.add(theme);
+    if (theme === Theme.DARK) {
       themeToggleRef.checked = true;
     }
   }
