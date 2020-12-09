@@ -31,7 +31,7 @@ function themeSetStorage(optionTheme) {
   localStorage.setItem('theme', optionTheme);
   bodyRef.classList.add(optionTheme);
 }
-console.log(bodyRef.className);
+
 function currentStatus() {
   if (currentTheme) {
     bodyRef.classList.add(currentTheme);
