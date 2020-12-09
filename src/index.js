@@ -6,36 +6,39 @@ const galleryRef = document.querySelector('.js-menu');
 const themeToggleRef = document.querySelector('#theme-switch-toggle');
 const bodyRef = document.querySelector('body');
 
+const bodyClassGhange = bodyRef.classList;
+
 const markup = itemsTemlate(menu);
 const Theme = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme',
 };
 const currentTheme = localStorage.getItem('theme');
-currentStatus();
+currentStatus(currentTheme);
 
 galleryRef.insertAdjacentHTML('beforeend', markup);
 themeToggleRef.addEventListener('change', changeClassTheme);
 
 function changeClassTheme() {
-  if (themeToggleRef.checked) {
-    themeSetStorage(Theme.DARK);
-    bodyRef.classList.remove(Theme.LIGHT);
-  } else {
-    themeSetStorage(Theme.LIGHT);
-    bodyRef.classList.remove(Theme.DARK);
-  }
+  themeToggleRef.checked
+    ? themeSetStorage(Theme.DARK)
+    : themeSetStorage(Theme.LIGHT);
 }
 
 function themeSetStorage(optionTheme) {
   localStorage.setItem('theme', optionTheme);
-  bodyRef.classList.add(optionTheme);
+  bodyClassGhange.add(optionTheme);
+  if (optionTheme === Theme.DARK) {
+    bodyClassGhange.remove(Theme.LIGHT);
+  } else {
+    bodyClassGhange.remove(Theme.DARK);
+  }
 }
 
-function currentStatus() {
-  if (currentTheme) {
-    bodyRef.classList.add(currentTheme);
-    if (currentTheme === Theme.DARK) {
+function currentStatus(thema) {
+  if (thema) {
+    bodyClassGhange.add(thema);
+    if (thema === Theme.DARK) {
       themeToggleRef.checked = true;
     }
   }
